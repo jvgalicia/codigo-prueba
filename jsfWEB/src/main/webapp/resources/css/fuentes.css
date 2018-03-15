@@ -1,0 +1,6 @@
+@CHARSET "ISO-8859-1";
+@font-face{ 
+    font-family: 'Roboto-Medium.ttf';
+    url("#{resource['fonts/Roboto-Medium.ttf']}")  format('truetype');
+    url('resources/fonts/Roboto-Medium.ttf') format('truetype');
+}

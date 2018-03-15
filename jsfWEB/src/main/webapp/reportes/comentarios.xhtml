@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<ui:composition template="/headAdmin.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+   
+	<ui:define name="bodyPromotor">
+ <script type="text/javascript">
+         nombrecomentarios();
+         colorcomentarios();
+	</script>
+	<div class="" style="">
+			<label style="font-size: 20px;" id="usuario"> : <p:outputLabel
+					value="#{beanUser.usuarios.nombre} #{beanUser.resposeDTO.msg}" />
+			</label>
+
+		</div>
+		<fieldset class="forma">
+			<!-- <span class="icon-Grid-Icon">&nbsp;Reticula</span>  -->
+			<span class="fa fa-th-list" style="color: #808080;">&nbsp;Listado</span>
+			<!-- 	<span class="icon-Add-Icon" style="margin-left: 780px; position: static;">
+					Agregar</span> -->
+			
+		</fieldset>
+		<center style="width: 81%; padding-left: 36px;">
+
+			<h:form id="tablaUsuario">
+				<p:growl id="usuarios" showDetail="true" />
+				<p:dataTable id="tablaComentarios" var="obj"
+					value="#{beanComentarios.listaComentario}" emptyMessage="No Existen Registros" 
+					paginator="true" rows="10"	rowKey="#{obj.comentarioId}"
+					style="font-size: 14px;padding-top: 39px;">
+					<p:growl id="message" showDetail="true" />
+					<p:column>
+						<table>
+							<h:outputText value="Usuario : "></h:outputText>
+							<h:outputText value="#{obj.nombreUser}"></h:outputText>
+							<p:separator styleClass="separardor" />
+							<h:outputText value="Nombre Empresa : "></h:outputText>
+							<h:outputText value="#{obj.nomEmpresa}"></h:outputText>
+						</table>
+					</p:column>
+					<p:column>
+						<table>
+							<h:outputText value="Fecha : "></h:outputText>
+							<h:outputText value="#{obj.fechaAlta}"></h:outputText>
+							<p:separator styleClass="separardor" />
+							<h:outputText value="Asunto : "></h:outputText>
+							<h:outputText value="#{obj.asunto}"></h:outputText>
+						</table>
+					</p:column>
+					<p:column>
+						<table>
+							<h:outputText value="Comentario : "></h:outputText>
+							<h:outputText value="#{obj.comentario}"></h:outputText>
+						</table>
+					</p:column>
+					<p:column style="text-align: center; min-width: 202px;">
+					
+						
+						<p:commandButton styleClass="acciones" value="Eliminar"
+							icon="ui-icon-trash" title="Eliminar"
+							action="#{beanComentarios.eliminarComentario(obj)}"
+							update="tablaComentarios"
+							style="margin-left: 5px; margin-top: 38px;">
+							<p:confirm header="Confirmation"
+								message="Estas Seguro de eliminar?" icon="ui-icon-alert" />
+						</p:commandButton>
+						<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+							<p:commandButton value="Yes" type="button"
+								styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+							<p:commandButton value="No" type="button"
+								styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+						</p:confirmDialog>
+					</p:column>
+
+
+				</p:dataTable>
+		
+		</h:form>
+       </center>
+	</ui:define>
+
+</ui:composition>

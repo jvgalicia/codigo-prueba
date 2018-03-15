@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<ui:composition template="/headAdmin.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+
+	<ui:define name="bodyPromotor">
+		<script type="text/javascript">
+			vaciarCamposComer();
+			nombreComer();
+			seleccionComer();
+		</script>
+		<h:form id="formAltaComer" styleClass="altaadmin">
+			<fieldset class="contenedor_forma">
+				<fieldset class="forma">
+					<span style="color: #808080;">AGREGAR&nbsp;COMERCIALIZADORA</span>
+					<p:commandLink value="Regresar" action="#{beanComer.listaComercializadora}"
+						styleClass="regresar fa fa-reply"></p:commandLink>
+				</fieldset>
+			</fieldset>
+			<p:fieldset styleClass="fieldadmin">
+				<p:commandButton styleClass="fotoalta" value="" />
+
+
+				<div class="vertical"></div>
+				<div class="titulosalta">
+					<label class="altainfo">INFORMACIÓN</label>
+
+				</div>
+
+				<div class="parte1">
+
+
+					<label class="alta_lugar">Nombre Comercializadora </label>
+					<p:separator styleClass="separator" />
+
+					<p:inputText id="nombreComer"
+						value="#{beanComer.comercializadora.comNombre}"
+						styleClass="inputtextalta" />
+
+
+					<label class="alta_lugar">Raz&oacute;n&nbsp;Social:</label>
+					<p:separator styleClass="separator" />
+					<p:inputText id="comerRaSocial"
+						value="#{beanComer.comercializadora.comRazonsocial}"
+						styleClass="inputtextalta" />
+
+					<p:message for="comerRaSocial" />
+					<label class="alta_lugar">RFC: </label>
+					<p:separator styleClass="separator" />
+					<p:inputText id="comRfc"
+						value="#{beanComer.comercializadora.comRfc}"
+						styleClass="inputtextalta" />
+
+
+
+				</div>
+				<div class="parte2">
+
+					<label class="alta_lugar">Identificador </label>
+					<p:separator styleClass="separator" />
+
+					<p:inputText id="indentificadorComer"
+						value="#{beanComer.comercializadora.comIdentificador}"
+						styleClass="inputtextalta" />
+
+
+					<label class="alta_lugar">Giro:</label>
+					<p:separator styleClass="separator" />
+					<p:inputText id="comerGiro"
+						value="#{beanComer.comercializadora.comGiro}"
+						styleClass="inputtextalta" />
+
+					<p:message for="comerGiro" />
+					<label class="alta_lugar">Logo: </label>
+					<p:separator styleClass="separator" />
+
+					<p:growl id="messages" showDetail="true" />
+					<p:fileUpload value="#{beanComer.file}" mode="simple" />
+
+
+					<p:selectOneMenu id="catAdmin"
+						value="#{beanComer.comercializadora.idAministradora}" effect="clip">
+						<f:selectItem itemLabel="Administradora" itemValue="" />
+						<f:selectItems value="#{beanComer.catAdministradora.entrySet()}"
+							var="valor" itemValue="#{valor.key}" itemLabel="#{valor.value}" />
+					</p:selectOneMenu>
+
+				</div>
+
+				<label style="margin-left: 96px;"> <p:growl
+						id="guardarComer" showDetail="true" /> <p:commandButton
+						value="Guardar" styleClass="botonguardar" update="formAltaComer"
+						action="#{beanComer.agregarComercializadora()}" />
+				</label>
+
+
+			</p:fieldset>
+		</h:form>
+	</ui:define>
+
+</ui:composition>

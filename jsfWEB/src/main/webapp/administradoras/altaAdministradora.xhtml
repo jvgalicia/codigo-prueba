@@ -1,0 +1,168 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<ui:composition template="/headAdmin.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+
+	<ui:define name="bodyPromotor">
+		<script type="text/javascript">
+			vaciarCamposAdministradoras();
+			nombre();
+			seleccion();
+		</script>
+		<h:form id="formularioAltaAdmin" styleClass="altaadmin">
+			<fieldset class="contenedor_forma">
+				<fieldset class="forma">
+					<span style="color: #808080;">AGREGAR&nbsp;ADMINISTRADORA</span>
+					<p:commandLink value="Regresar"
+						action="#{beanAdministradora.listaAdministradora}"
+						styleClass="fa fa-reply regresar"></p:commandLink>
+				</fieldset>
+			</fieldset>
+			<p:fieldset styleClass="fieldadmin">
+				<p:commandButton styleClass="fotoalta" value="" />
+
+
+				<div class="vertical"></div>
+				<div class="titulosalta">
+					<label class="altainfo">INFORMACIÓN</label>
+					<!-- <p:outputLabel value="#{beanAdministradora.administradora.admNombre} #{beanAdministradora.resposeDTO.msg}" /> -->
+
+				</div>
+
+				<div class="parte1">
+
+
+					<label class="alta_lugar">Nombre Administradora </label>
+					<p:separator styleClass="separator" />
+
+					<p:inputText id="nombreEmpresa"
+						value="#{beanAdministradora.administradora.admNombre}"
+						required="true" styleClass="inputtextalta"
+						requiredMessage="Ingresa un valor para el campo 'Nombre Empresa'" />
+					<p:message for="nombreEmpresa" />
+
+					<label class="alta_lugar">Identificador: </label>
+					<p:separator styleClass="separator" />
+					<p:inputText id="identificador"
+						value="#{beanAdministradora.administradora.admIdentificador}"
+						styleClass="inputtextalta" />
+
+					<label class="alta_lugar">Raz&oacute;n&nbsp;Social:</label>
+					<p:separator styleClass="separator" />
+					<p:inputText id="admRaSocial"
+						value="#{beanAdministradora.administradora.admRazonsocial}"
+						required="true" styleClass="inputtextalta"
+						requiredMessage="Ingresa un valor para el campo 'Razon Social'" />
+					<p:message for="admRaSocial" />
+
+					<label class="alta_lugar">Numero&nbsp;de&nbsp;Empresas: </label>
+					<p:separator styleClass="separator" />
+					<p:inputText id="numeroEmpresa"
+						value="#{beanAdministradora.administradora.numeroComercializadoras}"
+						styleClass="inputtextalta2" disabled="true" />
+
+				</div>
+				<div class="parte2">
+
+					<label class="alta_lugar">RFC: </label>
+					<p:separator styleClass="separator" />
+					<p:inputText id="admRfc"
+						value="#{beanAdministradora.administradora.admRfc}"
+						required="true" styleClass="inputtextalta"
+						requiredMessage="Ingresa un valor para el campo 'admRfc'" />
+					<p:message for="admRfc" />
+					<label class="alta_lugar">Cr&eacute;dito&nbsp;total:</label>
+					<p:separator styleClass="separator" />
+					<p:inputText id="credtitoTotal"
+						value="#{beanAdministradora.administradora.admCreditototal}"
+						required="true" styleClass="inputtextalta"
+						requiredMessage="Ingresa un valor para el campo 'Credito Total'" />
+					<p:message for="credtitoTotal" />
+
+					<label class="alta_lugar">Deuda&nbsp;al&nbsp;D&iacute;a: </label>
+					<p:separator styleClass="separator" />
+					<p:inputText id="deudaDIA"
+						value="#{beanAdministradora.administradora.admDeudaaldia}"
+						styleClass="inputtextalta" disabled="true" />
+
+					<label style="margin-left: 96px;"> <p:commandButton
+							value="Guardar" styleClass="botonguardar"
+							update="formularioAltaAdmin"
+							action="#{beanAdministradora.agregarAdministradora}" />
+					</label>
+				</div>
+				<div id="comercializadoraDiv" style="visibility: hidden;">
+
+					<p:dataTable id="agregarComerTable" var="obj"
+						value="#{beanAdministradora.listaComercializadora}"
+						emptyMessage="No Existen Comercializadoras" rows="10"
+						rowKey="#{obj.comId}" style="font-size: 14px;">
+
+						<p:growl id="message" showDetail="true" />
+						<p:column>
+							<label class="alta_lugar">Nombre Comercializadora </label>
+							<p:separator styleClass="separator" />
+							<p:inputText id="nombreComer" value="#{obj.comNombre}"
+								styleClass="inputtextalta" />
+
+							<label class="alta_lugar">Raz&oacute;n&nbsp;Social:</label>
+							<p:separator styleClass="separator" />
+							<p:inputText id="comerRaSocial" value="#{obj.comRazonsocial}"
+								styleClass="inputtextalta" />
+							<p:message for="comerRaSocial" />
+
+							<label class="alta_lugar">RFC: </label>
+							<p:separator styleClass="separator" />
+							<p:inputText id="comRfc" value="#{obj.comRfc}"
+								styleClass="inputtextalta" />
+
+						</p:column>
+						<p:column>
+							<label style="margin-left: 96px;"> <p:commandButton
+									value="Eliminar" styleClass="botonguardar"
+									update="formularioAltaAdmin"
+									action="#{beanAdministradora.eliminarRegistro(obj)}">
+								</p:commandButton>
+							</label>
+
+							<label class="alta_lugar">Identificador </label>
+							<p:separator styleClass="separator" />
+
+							<p:inputText id="indentificadorComer"
+								value="#{obj.comIdentificador}" styleClass="inputtextalta" />
+
+
+							<label class="alta_lugar">Giro:</label>
+							<p:separator styleClass="separator" />
+							<p:inputText id="comerGiro" value="#{obj.comGiro}"
+								styleClass="inputtextalta" />
+
+							<p:message for="comerGiro" />
+							<label class="alta_lugar">Logo: </label>
+							<p:separator styleClass="separator" />
+
+
+						</p:column>
+
+					</p:dataTable>
+					<label style="margin-left: 96px;"> <p:growl id="message"
+							showDetail="true" /> <p:commandButton value="Agregar"
+							styleClass="botonguardar" update="formularioAltaAdmin"
+							action="#{beanAdministradora.asignarComer()}">
+						</p:commandButton>
+					</label>
+
+				</div>
+
+				<p:commandLink value="+ Agregar Comercializadora"
+					onclick="agregarComer();" styleClass="agregarempresas" />
+
+			</p:fieldset>
+		</h:form>
+	</ui:define>
+
+</ui:composition>

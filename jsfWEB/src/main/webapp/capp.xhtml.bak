@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<f:facet name="first">
+		<title>Login</title>
+
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<h:outputScript library="js" name="login.js"/>
+		<h:outputStylesheet library="css" name="fuentes.css" />
+		<h:outputStylesheet library="css" name="login.css"></h:outputStylesheet>
+		<h:outputStylesheet library="css" name="style.css"></h:outputStylesheet>
+	</f:facet>
+</h:head>
+<body>
+<div class="head_logo" align="center"></div>
+	
+	<span class="titulos"><span class="fa fa-angle-left">&nbsp;Iniciar&nbsp;Sesión&nbsp;<span class="fa fa-angle-right"> </span></span></span>
+	<f:view>
+		<div id="container">
+			<h:form id="formularioLogin">
+				<div class="inputs">
+
+
+					<p:inputText id="username" value="#{beanUser.usuarios.usuario}"
+						required="true" styleClass="user"
+						placeholder="iD de usuario o email"
+						requiredMessage="Ingresa un valor para el ID Usuario" />
+					<p:message for="username" />
+					<p:password id="txtPassword" value="#{beanUser.usuarios.password}"
+						required="true" styleClass="user" placeholder="Contraseña"
+						requiredMessage="Ingresa un valor para la Clave de Acceso" />
+					<p:message for="txtPassword" />
+
+					<div id="div">
+						<!-- <h:selectManyCheckbox onselect="select" onclick="guardar()">
+						<f:selectItem itemLabel="Recordarme en este equipo" />
+                    </h:selectManyCheckbox> -->
+						<label> <h:selectBooleanCheckbox
+								value="#{beanUser.checboxlogin}"></h:selectBooleanCheckbox></label> <span
+							class="general" style="margin-left: -6px">Recordarme&nbsp;en&nbsp;este
+							equipo</span>
+
+						<h:commandButton styleClass="button" update="formularioLogin"
+							action="#{beanUser.validarUsuario()}" value="Ingresar >"></h:commandButton>
+					</div>
+
+				</div>
+				<div id="double-down-div">
+					<span class="olvidarcontra" style="">¿¿ olvidaste tu contraseña ??</span> 
+					<span id="double-down" class="fa fa-angle-double-down "></span>
+				</div>
+				<div class="footer">
+					<span class="copyright"> <span class="icon-Copyright-Icon">
+							2016 Credi App Bank Solution </span>
+					</span>
+				</div>
+				<div class="minifooter"></div>
+			</h:form>
+		</div>
+	</f:view>
+</body>
+
+</html>

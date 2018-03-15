@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title>Login</title>
+	<h:outputStylesheet library="css" name="fuentes.css" />
+	<h:outputStylesheet library="css" name="login.css"></h:outputStylesheet>
+
+	
+	
+	<div class="head_logo" align="center"></div>
+</h:head>
+<body>
+	<span class="titulos"> <span class="icon-Left-Arrow">Recuperar ContraseÃ±a<span class="icon-Right-Arrow"></span>
+	</span></span>
+		<f:view>
+	<p class="parrafo">
+		Â¡Haz olvidado tu ContraseÃ±a!... no te preocupes puedes solicitarla
+		ingresando tu<br /> correo electrÃ³nico o ID de usuario y en breve
+		recibiras un correo con la contraseÃ±a<br /> y una confirmaciÃ³n de
+		usuario.
+	</p>
+	<div class="inputsrecupera">
+		<!-- <h:inputText  placeholder="id de usuario o email" styleClass="user"  ></h:inputText> -->
+		<input type="text" class="recu" placeholder="iD de usuario o email" />
+	</div>
+		<div class="buttonrecupera">
+		<h:commandButton value="Recupera >" styleClass="button"></h:commandButton>
+		</div>
+		<div>
+		<span class="cancel"> </span> 
+		<span class="icon-Close-Icon"></span>
+		</div>
+		<div class="footer">
+			<span class="copyright"> <span class="icon-Copyright-Icon">
+					2016 Credi App Bank Solution </span>
+			</span>
+		</div>
+		
+		<div class="minifooter"></div>
+	</f:view>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<ui:composition template="/headAdmin.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+
+	<ui:define name="bodyPromotor">
+		<script type="text/javascript">
+			nombrereportes();
+			colortransacciones();
+		</script>
+		<style>
+.ui-inputfield {
+	background-color: #F2F2F2 !important;
+	box-shadow: none !important;
+}
+
+.ui-state-default {
+	background-color: #F2F2F2 !important;
+	box-shadow: none !important;
+}
+.ui-state-default{
+    width: 58px;
+}
+.ui-selectonemenu label.ui-selectonemenu-label{
+    cursor: pointer;
+    height: 26px;
+    width: 134px !important;
+    font-size: 16px !important;
+    }
+</style>
+		<h:form id="formularioTransacciones" styleClass="altaadmin">
+			<fieldset class="contenedor_forma">
+				<fieldset class="forma">
+					<span style="color: #808080; margin-top: 12px;" class="fa fa-filter">&nbsp;Filtrar&nbsp;por:</span>
+                    
+                    <INPUT type="button" value="Fecha" onclick="muestrafecha2()" style="background-color: transparent;
+					        border: none; color: #808080; font-size: 14px; font-family: FontAwesome;"/>
+					<p:selectOneMenu id="AdminTransaccion"
+						style="margin-right: 33px; width: 160px;" effect="fold"
+						value="#{beanReporteVentas.parametros.idAdministradora}">
+						<f:selectItem itemLabel="Administradora" itemValue="" />
+						<f:selectItems
+							value="#{beanReporteVentas.administradora.entrySet()}"
+							var="valor" itemValue="#{valor.key}" itemLabel="#{valor.value}" />
+						<p:ajax listener="#{beanReporteVentas.catComerByAdmin('transaccion')}"
+							update="formularioTransacciones:comerTransaccion,formularioTransacciones:empresaTransaccion,formularioTransacciones:tablaReportesTrans" />
+					</p:selectOneMenu>
+					<p:selectOneMenu id="comerTransaccion"
+						style="margin-right: 33px; width: 160px;" effect="fold"
+						value="#{beanReporteVentas.parametros.idComercializadora}">
+						<f:selectItem itemLabel="Comercializadora" itemValue="" />
+						<f:selectItems
+							value="#{beanReporteVentas.comerbyAdmin.entrySet()}" var="valor"
+							itemValue="#{valor.key}" itemLabel="#{valor.value}" />
+						<p:ajax listener="#{beanReporteVentas.catEmpresaByComer('transaccion')}"
+							update="formularioTransacciones:empresaTransaccion, formularioTransacciones:tablaReportesTrans" />
+					</p:selectOneMenu>
+
+					<p:selectOneMenu id="empresaTransaccion"
+						style="margin-right: 33px; width: 160px;" effect="fold"
+						value="#{beanReporteVentas.parametros.idEmpresa}">
+						<f:selectItem itemLabel="Empresa" itemValue=""
+							style="height: 10px;" />
+						<f:selectItems style="height: 10px;"
+							value="#{beanReporteVentas.empresaByComer.entrySet()}"
+							var="valor" itemValue="#{valor.key}" itemLabel="#{valor.value}" />
+							<p:ajax listener="#{beanReporteVentas.reporteVentasTransaccionesUpdate}"
+							update="formularioTransacciones:tablaReportesTrans" />
+					</p:selectOneMenu>
+					
+				</fieldset>
+				<p:fieldset style="margin-left: 300px; width: 136px; background-color: transparent;">
+                    <p:calendar id="fecha1" style="display: none;" value="#{beanReporteVentas.parametros.fecha1}" >
+                    
+                    </p:calendar>
+                    <p:calendar id="fecha2" style="display: none;" value="#{beanReporteVentas.parametros.fecha2}" >
+                    <p:ajax event="dateSelect" listener="#{beanReporteVentas.reporteVentasUpdate}" update="formularioTransacciones:tablaReportesTrans" />
+                    </p:calendar>
+                    </p:fieldset>
+			</fieldset>
+
+			<p:fieldset styleClass="fieldadmin">
+
+				<center>
+					<h:commandButton value="PDF" action="#{beanReporteVentas.viewReporteTransacciones}" id="pdf"
+						styleClass="botosPDF" />
+
+
+					<h:commandButton value="descargar PDF" action="#{beanReporteVentas.exportReporteTransacciones}"
+						id="pdf2" icon="fa fa-file-pdf-o" />
+				</center>
+				<center style="width: 51%; padding-left: 3px;">
+
+					<p:growl id="transRepo" showDetail="true" />
+					<p:dataTable id="tablaReportesTrans" var="obj"
+						value="#{beanReporteVentas.listaTransaccionesDTO}"
+						emptyMessage="No Existen Registros" paginator="true" rows="10"
+						rowKey="" style="font-size: 14px;padding-top: 39px; width: 800px;">
+						<p:growl id="message" showDetail="true" />
+						<p:column headerText="Administradora">
+							<h:outputText value="#{obj.admNombre}" />
+						</p:column>
+						<p:column headerText="Empresa">
+							<h:outputText value="#{obj.empresaNombre}" />
+						</p:column>
+						<p:column headerText="Sucursal">
+							<h:outputText value="#{obj.sucursalNombre}" />
+						</p:column>
+						<p:column headerText="Transacciones">
+							<h:outputText value="#{obj.numeroTransaccione}" />
+						</p:column>
+						<p:column headerText="Monederos Emitidos">
+							<h:outputText value="#{obj.numMonederoEmitido}" />
+						</p:column>
+						<p:column headerText="Transacciones fallidas">
+							<h:outputText value="#{obj.numeroFallidas}" />
+						</p:column>
+						<p:column headerText="Ticket Promedio">
+							<h:outputText value="#{obj.tiketPromedio}" />
+						</p:column>
+					</p:dataTable>
+				</center>
+
+
+			</p:fieldset>
+		</h:form>
+	</ui:define>
+
+
+</ui:composition>

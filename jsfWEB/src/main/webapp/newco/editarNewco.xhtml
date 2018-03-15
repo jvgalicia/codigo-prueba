@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<ui:composition template="/headAdmin.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+
+	<ui:define name="bodyPromotor">
+		<script type="text/javascript">
+		nombrenewco();
+		color4();
+	</script>
+		<h:form id="formularioAltaNewco" styleClass="altaadmin">
+			<fieldset class="contenedor_forma">
+				<fieldset class="forma">
+					<span style="color: #808080;">AGREGAR&nbsp;NEWCO</span>
+					<p:commandLink value="&nbsp;Regresar" action="#{beanNewCo.listaNewco}"
+						styleClass="regresar fa fa-reply"></p:commandLink>
+				</fieldset>
+			</fieldset>
+			<p:fieldset id="fieldadmin" styleClass="fieldadmin" style="height: 500px;">
+				
+
+				<div class="vertical" style="margin-top: 8px;"></div>
+				<div class="titulosalta" style="margin-top: 10px;">
+					<label class="altainfo">INFORMACIÓN</label>
+					<!-- <p:outputLabel value="#{beanAdministradora.administradora.admNombre} #{beanAdministradora.resposeDTO.msg}" /> -->
+
+				</div>
+
+				<div class="parte1">
+
+
+					<label class="alta_lugar">Nombre NewCo </label>
+					<p:separator styleClass="separator" />
+
+					<p:inputText id="nombreNewco"
+						value="#{beanNewCo.newcoDTO.newNombre}" 
+						styleClass="inputtextalta"
+						 />
+					
+
+					<label class="alta_lugar">Raz&oacute;n&nbsp;Social:</label>
+					<p:separator styleClass="separator" />
+					<p:inputText id="newRaSocial"
+						value="#{beanNewCo.newcoDTO.newRazonsocial}" 
+						styleClass="inputtextalta"
+						 />
+
+					<p:message for="newRaSocial" />
+					<label class="alta_lugar">RFC: </label>
+					<p:separator styleClass="separator" />
+					<p:inputText id="newRfc" value="#{beanNewCo.newcoDTO.newRfc}"
+						styleClass="inputtextalta"
+						 />
+					
+
+					<label class="alta_lugar">Administradora: </label>
+					<p:separator styleClass="separator" />
+				</div>
+				
+				<p:commandLink value="+ Asignar Administradora" onclick="asignarAdmin();"
+					styleClass="agregarempresas" />
+					
+				<div class="parte2" ></div>
+
+                <div id="asigAminNewco" style="visibility: hidden; height: 0px;" class="parte3">
+                
+                <center style="width: 81%; padding-left: 36px;">
+					<p:dataTable id="tablaAdminAsiNewcos" var="obj" 
+						value="#{beanNewCo.listanewcoAdmin}" scrollHeight="100" scrollable="true" 
+						emptyMessage="No Existen Adminsitradoras asignadas" rows="5"
+						rowKey="#{obj.idNead}" style="font-size: 14px;  margin-left:-100px!important;">
+
+						<p:growl id="message" showDetail="true" />
+						<p:column>
+							
+								<p:selectOneMenu id="newAdmin" style="margin-right: 33px; width: 160px;"
+									value="#{obj.idAdministradora}" effect="fold">
+									<f:selectItem itemLabel="Administradora" itemValue="" />
+									<f:selectItems
+										value="#{beanNewCo.catAdministradora.entrySet()}" var="valor"
+										itemValue="#{valor.key}" itemLabel="#{valor.value}" />
+								</p:selectOneMenu>
+							
+						</p:column>
+						<p:column>
+							<p:inputText id="participacionPorcentual"
+								value="#{obj.partiporcentual}" placeholder="Participacion Porcentual"
+								styleClass="inputtextalta4" />
+						</p:column>
+						<p:column>
+							<p:inputText id="deudaDIA" placeholder="Crédito Dirigido"
+								value="#{obj.creditoadmin}"
+								styleClass="inputtextalta3"/>
+						</p:column>
+						<p:column>
+								<label style="margin-left: 0px;"> 
+							<p:commandButton styleClass="acciones" icon="fa fa-trash-o" id="eliminartrash" value="&nbsp;"
+							             update="formularioAltaNewco" action="#{beanNewCo.eliminarRegistro(obj)}">  
+							</p:commandButton>
+							<p:tooltip id="toolTipFade" for="eliminartrash" value="Eliminar esta Administradora" 
+							            position="top"  style="background-color:red; color:white;"/>
+								</label>
+						</p:column>
+						
+					</p:dataTable>
+					</center>
+					<label style="margin-left: 96px;"> <p:growl id="message" showDetail="true" /> 
+					  <p:commandButton value="Agregar"
+							styleClass="botonguardar" update="formularioAltaNewco"
+							action="#{beanNewCo.asignarNewco()}">  
+					  </p:commandButton>
+					</label>
+					<label style="margin-left: 96px;"> <p:growl id="messageGuardar"
+							showDetail="true" /> <p:commandButton value="Guardar"
+							styleClass="botonguardar" update="formularioAltaNewco"
+							action="#{beanNewCo.altaNewco}" />
+					</label>
+		     </div>
+
+
+			</p:fieldset>
+		</h:form>
+	</ui:define>
+
+</ui:composition>

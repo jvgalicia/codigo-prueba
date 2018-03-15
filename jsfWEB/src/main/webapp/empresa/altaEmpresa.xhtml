@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<ui:composition template="/headAdmin.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="bodyPromotor">
+
+		<script type="text/javascript">
+		 nombreempre();
+		 vaciarCamposEmpresas();
+		color1();
+	</script>
+		<h:form id="formularioEmpresa" styleClass="altaadmin">
+			<fieldset class="contenedor_forma">
+				<fieldset class="forma">
+					<span style="color: #808080;">AGREGAR&nbsp;EMPRESA</span>
+					<p:commandLink value="&nbsp;Regresar" action="#{beanEmpresas.listaEmpresa}"
+						styleClass="regresar fa fa-reply"/>
+				</fieldset>
+			</fieldset>
+			<p:fieldset styleClass="fieldadmin">
+				<p:commandButton styleClass="fotoalta" value="" />
+				
+				<div class="vertical"></div>
+				<div class="titulosalta">
+					<label class="altainfo">INFORMACIÓN</label>
+					<!-- <p:outputLabel value="#{beanAdministradora.administradora.admNombre} #{beanAdministradora.resposeDTO.msg}" /> -->
+
+				</div>
+				<div class="parte1">
+
+					<label class="alta_lugar">Nombre Empresa: </label>
+					<p:separator styleClass="separator" />
+					<p:inputText id="empNombre" value="#{beanEmpresas.empresa.nombre}"
+						required="true" styleClass="inputtextalta"
+						requiredMessage="Ingresa un valor para el campo 'Nombre'" />
+					<p:message for="empNombre" />
+
+					<label class="alta_lugar">Razón&nbsp;Social: </label>
+					<p:separator styleClass="separator" />
+
+					<p:inputText id="empRaSocial"
+						value="#{beanEmpresas.empresa.razonsocial}" required="true"
+						styleClass="inputtextalta"
+						requiredMessage="Ingresa un valor para el campo 'Razon Social'" />
+					<p:message for="empRaSocial" />
+
+					<label class="alta_lugar">RFC: </label>
+					<p:separator styleClass="separator" />
+
+					<p:inputText id="empRfc" value="#{beanEmpresas.empresa.rfc}"
+						required="true" styleClass="inputtextalta"
+						requiredMessage="Ingresa un valor para el campo 'RFC'" />
+					<p:message for="empRfc" />
+
+					<label class="alta_lugar">Numero de Empleados: </label>
+					<p:separator styleClass="separator" />
+
+					<p:inputText id="empNumeroEmpl" value="#{beanEmpresas.empresa.numeroempleado}" 
+					    required="true" styleClass="inputtextalta"
+						requiredMessage="Ingresa un valor para el campo 'Numero de Empleados'" />
+					<p:message for="empNumeroEmpl" />
+
+					<label class="alta_lugar">Asiganda a una: </label>
+					<p:separator styleClass="separator" />
+
+					<input onclick="checBoxAsignacion()" type="radio" name="gender"
+						id="admiCheck" value="admin" /> Administradora<br></br> 
+				   <input onclick="checBoxAsignacion()" type="radio" name="gender"
+						id="comerCheck" value="comer" /> Comercializaora<br></br>
+					<h:panelGrid columns="2" cellpadding="5">
+						<p:selectOneMenu id="empComer" style="visibility: hidden;"  widgetVar="editComer"
+							value="#{beanEmpresas.empresa.idComercializadora}" effect="fold">
+							<f:selectItem itemLabel="Comercializadora" itemValue="" />
+							<f:selectItems
+								value="#{beanEmpresas.catComercializadora.entrySet()}"
+								var="valor" itemValue="#{valor.key}" itemLabel="#{valor.value}" />
+							<p:ajax listener="#{beanEmpresas.adminBycomer}"  update="formularioEmpresa:empAdmin"/>
+						</p:selectOneMenu>
+
+						<p:selectOneMenu id="empAdmin" style="visibility: hidden;" widgetVar="editAdmin"
+							value="#{beanEmpresas.empresa.idAdministradora}" effect="fold">
+							<f:selectItem itemLabel="Administradora" itemValue="" />
+							<f:selectItems
+								value="#{beanEmpresas.catAdministradora.entrySet()}" var="valor"
+								itemValue="#{valor.key}" itemLabel="#{valor.value}" />
+								<p:ajax listener="#{beanEmpresas.catAdminsitradoras}"  update="formularioEmpresa:empAdmin"/>
+						</p:selectOneMenu>
+					</h:panelGrid>
+
+
+				</div>
+				<div class="parte2">
+
+					<label class="alta_lugar">Identificador&nbsp;Empresa: </label>
+					<p:separator styleClass="separator" />
+
+					<p:inputText id="empIdentificador"
+						value="#{beanEmpresas.empresa.identificador}" required="true"
+						styleClass="inputtextalta"
+						requiredMessage="Ingresa un valor para el campo 'Identificador Empresa'" />
+					<p:message for="empIdentificador" />
+
+					<label class="alta_lugar">Giro: </label>
+					<p:separator styleClass="separator" />
+
+					<p:inputText id="empGiro" value="#{beanEmpresas.empresa.giro}"
+						required="true" styleClass="inputtextalta"
+						requiredMessage="Ingresa un valor para el campo 'GIRO'" />
+					<p:message for="empGiro" />
+
+					<label class="alta_lugar">Periodicidad&nbsp;de&nbsp;Pago: </label>
+					<p:separator styleClass="separator" />
+           
+					
+					<p:selectOneMenu id="periodicidad" widgetVar="editperiodicidad"
+						value="#{beanEmpresas.empresa.idPeriodicidadpago}" effect="fold">
+						<f:selectItem itemLabel="Periodicidad" itemValue="" />
+						<f:selectItems value="#{beanEmpresas.periodicidadpago.entrySet()}"
+							var="valor" itemValue="#{valor.key}" itemLabel="#{valor.value}" />
+					</p:selectOneMenu>
+
+					<p:growl id="message" showDetail="true" />
+
+					<p:messages id="mesages" autoUpdate="true" closable="true"
+						showDetail="true"></p:messages>
+
+
+
+
+
+					<p:commandButton styleClass="botonguardar" value="Guardar"
+						action="#{beanEmpresas.guardarEmpresa}" update="formularioEmpresa"
+						style="margin-left: 5px; margin-top: 38px;" >
+						<p:confirm header="Confirmation" message="Desea guardar"
+							icon="ui-icon-alert" />
+					</p:commandButton>
+					<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+						<p:commandButton value="Yes" type="button"
+							styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+						<p:commandButton value="No" type="button"
+							styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+					</p:confirmDialog>
+
+				</div>
+			</p:fieldset>
+		</h:form>
+	</ui:define>
+
+</ui:composition>

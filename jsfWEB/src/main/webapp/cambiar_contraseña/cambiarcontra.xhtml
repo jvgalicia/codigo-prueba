@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<ui:composition template="/headAdmin.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="bodyPromotor">
+	<script type="text/javascript">
+		 nombreConfi();
+	</script>
+	<h:form id="formularioAdministradora" styleClass="altaadmin">
+		<fieldset class="contenedor_forma">
+			<fieldset class="forma" >
+				<span  style="color: #808080;" >CONFIGURACIÓN</span> 
+				<p:commandLink value="Regresar" onclick="history.back()"
+				styleClass="icon-Back-Icon regresar" ></p:commandLink>
+			</fieldset></fieldset>
+ <p:fieldset styleClass="fieldadmin">
+			<div>
+				
+			</div>
+
+ 
+
+        <div class="vertical"  style="margin-top: 0px;"></div>
+			<div class="titulosalta" style="margin-top: 40px;">
+				<label class="altainfo">CONFIGURACIÓN</label>
+				
+			</div>
+			<div class="parte1">
+			
+			       
+			       <label class="alta_lugar">Contraseña: </label><p:separator styleClass="separator"/>
+			       <p:password  placeholder="Contraseña" id="Contraseña"  styleClass="inputtextalta" 
+			                      required="true" requiredMessage="Ingresa su Contraseña"/> 
+			       
+					<label class="alta_lugar">Nueva&nbsp;Contraseña: </label><p:separator styleClass="separator"/>
+					<p:inputText id="NUevaContra" required="true" styleClass="inputtextalta buttonPass"
+								placeholder="Nueva Contraseña"
+								requiredMessage="Ingresa una Contraseña Nueva" />
+								
+								<label class="alta_lugar">Verificar&nbsp;Contraseña: </label><p:separator styleClass="separator"/>
+								<p:password
+								id="Verificacion" required="true" styleClass="inputtextalta"
+								placeholder="Verifque su Contraseña"  /> 
+			</div>
+             <div class="parte2">
+			<label class="alta_lugar" style="margin-top: 10px;">Pregunta 1:</label><p:separator styleClass="separator"/>
+			<p:inputText
+								id="admRfc" value="#{beanAdministradora.administradora.admRfc}"
+								required="true" styleClass="inputtextalta" placeholder="RFC"
+								requiredMessage="Ingresa un valor para el campo 'admRfc'" /> <p:message
+								for="admRfc" /> 
+			
+					<label class="alta_lugar">Pregunta 2: </label><p:separator styleClass="separator"/>
+					<p:inputText
+								id="credtitoTotal"
+								value="#{beanAdministradora.administradora.admCreditototal}"
+								required="true" styleClass="inputtextalta"
+								placeholder="Credito Total"
+								requiredMessage="Ingresa un valor para el campo 'Credito Total'" />
+							<p:message for="credtitoTotal" /> 
+							
+							
+								
+								<label class="alta_lugar">Pregunta 3: </label><p:separator styleClass="separator"/>
+						<p:inputText id="deudaDIA"
+								value="#{beanAdministradora.administradora.admDeudaaldia}"
+								styleClass="inputtextalta" disabled="true" /> 
+				
+				
+				</div>
+					<label> <p:commandButton value="Guardar" styleClass="botonguardar"
+								update="formularioAdministradora"
+								action="#{beanAdministradora.bajaAdmin}" >
+							<p:confirm header="Confirmation" message="¿Esta seguro que Desea Guardar" 
+								icon="ui-icon-alert" />
+						</p:commandButton> 
+								<p:confirmDialog 
+								global="true" showEffect="fade" hideEffect="fade">
+								<p:commandButton value="Yes" type="button"
+									styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+								<p:commandButton value="No" type="button"
+									styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+							</p:confirmDialog>
+					</label>
+
+
+			 </p:fieldset>
+		</h:form>
+	</ui:define>
+	</ui:composition>

@@ -1,0 +1,319 @@
+@CHARSET "ISO-8859-1";
+/* estlo para el cuerpo login*/
+body {
+	background-color: aqua;
+	background-image: url("#{resource['img/Background.jpg']}");
+	position: static;
+	background-size: calc(92% + 100px);
+	background-repeat: repeat;
+}
+/*logo de la cabecera*/
+.head_logo {
+	position: static;
+	margin-top: -10px;
+	background-image: url("#{resource['img/CrediApp-Logo-Web.png']}");
+	background-repeat: no-repeat;
+	height: 100px;
+	background-size: calc(7% + 30px);
+	background-position: center;
+}
+/*importacion de fuentes
+@font-face {
+	font-family: FontAwesome;
+	font-style: normal;
+	font-weight: 400;
+	src: url(../resources/fonts/Roboto-Medium.ttf) format("truetype");*/
+}
+@font-face {
+	font-family: FontAwesome;
+	font-style: Medium;
+	font-weight: 400;
+	src: local(FontAwesome), local(FontAwesome), url(../fonts/Roboto.woff2)
+		format('woff2');
+}
+
+@font-face {
+	font-family: 'MyriadPro';
+	font-style: SemiboldSemiCn;
+	font-weight: 400;
+	src: local('MyriadPro'), local('MyriadPro-SemiboldSemiCn'),
+		url(../fonts/MyriadPro.woff2) format('woff2');
+}
+/*estilo para el span*/
+span.titulos {
+	margin: 0 auto;
+	margin-top: 100px;
+	display: table;
+	color: #ffffff;
+	font-family: FontAwesome ';
+	font-style: normal;
+	font-size: 17px;
+}
+/*comportamiento el poner el cursor*/
+input:FOCUS {
+	outline: none;
+	box-shadow: -1px 0px 8px #000000;
+}
+/* esilo para inputs*/
+.inputs {
+	width: 20%;
+	height: 20px;
+	display: table;
+	margin: 8px auto;
+	border: 0;
+	padding: 8px 10px;
+	box-sizing: border-box;
+}
+/*estilo para input especifico*/
+input.user {
+	width: 100%;
+	display: table;
+	margin: 18px auto;
+	height: 34px;
+	border: 1.7px;
+	box-shadow: 2px 2px 10px #33d6ff;
+	padding: 8px 10px;
+	box-sizing: border-box;
+	font-size: 16px;
+	font-family: FontAwesome;
+	color: white;
+	border-radius: 6px;
+	background-color: transparent;
+	border: solid;
+	border-bottom-width: 1.7px;
+	border-left-width: 1.7px;
+	border-right-width: 1.7px;
+	border-top-width: 1.7px;
+	border-color: #f2f2f2;
+}
+/**+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++**/
+[type="checkbox"]+label:BEFORE {
+	background-color: transparent;
+	font-family: 'icomoon';
+	display: inline-block;
+	font-size: 15px;
+}
+
+[type="checkbox"] {
+	background-color: transparent;
+}
+
+input[type="checkbox"] {
+	appearance: none;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	border: 1px solid white;
+	width: 15px;
+	height: 15px;
+	border-radius: 5px;
+	margin: 0 5px 0 0;
+}
+
+input[type="checkbox"]:checked {
+	background-image: url("#{resource['img/Checkboxcheck.png']}");
+	background-size: calc(120%);
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+</
+pre> <pre>input[type="checkbox"]#checkbox1:focus {
+	outline: none;
+}
+/**+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++**/
+
+/*estilo para boton especfico*/
+.button {
+	background-color: white;
+	font-family: FontAwesome;
+	cursor: pointer;
+	font-size: 10px;
+	border-radius: 8px;
+	margin-left: 160px;
+	height: 30px;
+	margin-top: -30px;
+	width: 100px;
+	color: #0080c0;
+	border: none;
+}
+/*estilo para label*/
+label.arrow {
+	border: solid;
+	margin-bottom: 0%;
+}
+/*estilo para placeholder*/
+::-webkit-input-placeholder {
+	color: #f2f2f2;
+	font-family: FontAwesome;
+	font-size: 10.5px;
+	font-style: normal;
+}
+/*pie de pagina*/
+.footer {
+	position: fixed;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	padding: 1rem;
+	background-color: #304244;
+	text-align: center;
+	height: 6%;
+}
+/*estilo para pie de agina dentro de otro pie*/
+.minifooter {
+	position: fixed;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	padding: .001rem;
+	background-color: #3399ff;
+	text-align: center;
+	height: 0.5%;
+}
+/*estilo para texto*/
+.olvidarcontra {
+	margin: 0 auto;
+	margin-top: 5%;
+	display: table;
+	text-decoration: none;
+	color: #fff;
+	font-family: FontAwesome;
+	font-style: normal;
+	font-size: 12px;
+}
+/*estilo para texto*/
+.copyright {
+	margin: 0 auto;
+	margin-top: 2px !important;
+	display: table;
+	color: #3399ff;
+	font-size: 8px;
+}
+/*estilo para texto*/
+p.parrafo {
+	margin: 0 auto;
+	margin-top: 4%;
+	display: table;
+	font-family: FontAwesome;
+	font-size: 12px;
+	color: #f2f2f2;
+	text-align: center;
+	{
+}
+
+}
+/*estilo para input especifico*/
+input.recu {
+	width: 100%;
+	display: table;
+	margin: 0 auto;
+	height: 34px;
+	box-shadow: 2px 2px 10px #33d6ff;
+	padding: 8px 10px;
+	box-sizing: border-box;
+	font-size: 16px;
+	font-family: FontAwesome;
+	color: white;
+	border-radius: 6px;
+	background-color: transparent;
+	border: solid;
+	border-bottom-width: 1.7px;
+	border-left-width: 1.7px;
+	border-right-width: 1.7px;
+	border-top-width: 1.7px;
+	border-color: #f2f2f2;
+}
+/*estilo para texto*/
+.inputsrecupera {
+	width: 29%;
+	height: 18px;
+	display: table;
+	margin: 23px auto;
+	border: 0;
+	padding: 8px 10px;
+	box-sizing: border-box;
+}
+/*estilo para boton especifico*/
+.buttonrecupera {
+	margin: 0 auto;
+	padding: 20px;
+	width: 11.5%;
+}
+/*estilo para contenedor de icono*/
+.cancel {
+	margin: 0 auto;
+	margin-top: 2%;
+	display: table;
+	color: #fff;
+	font-family: FontAwesome;
+	font-style: normal;
+	font-size: 10.3px;
+}
+/*estilo placeholder IE explorer*/
+:-ms-input-placeholder {
+	color: #f2f2f2;
+	font-family: FontAwesome;
+	font-size: 10.5px;
+	font-style: normal;
+}
+/*estilo placeholder mozilla*/
+:-moz-placeholder {
+	color: #f2f2f2;
+	font-family: FontAwesome;
+	font-size: 10.5px;
+	font-style: normal;
+}
+/*estilo pdf*/
+.pdf {
+	background: url(../resources/img/PDF.jpg) no-repeat;
+	width: 50px;
+	height: 25px;
+}
+
+.select {
+	background: url("#{resources['img/Checkbox-.png']}") left center
+		no-repeat !important;
+	position: absolute;
+	background-size: calc(50% + 0px);
+}
+
+.general {
+	color: #f2f2f2;
+	font-family: FontAwesome;
+	font-size: 10.5px;
+	font-style: normal;
+}
+
+.ui-chkbox-icon {
+	background-color: transparent;
+}
+/*.ui-chkbox-box{
+background: url('../resources/img/Checkbox-.png') left center no-repeat !important;
+	background-repeat: no-repeat !important;
+	border: none;
+	z-index: 4;
+	background-color: red;
+	background: rgba(248,80,50,1);
+    background: -moz-linear-gradient(left, rgba(248,80,50,1) 0%, rgba(248,80,50,0) 0%, rgba(241,111,92,0) 50%, rgba(246,41,12,0) 51%, rgba(240,47,23,0) 71%, rgba(231,56,39,0) 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(248,80,50,1)), color-stop(0%, rgba(248,80,50,0)), color-stop(50%, rgba(241,111,92,0)), color-stop(51%, rgba(246,41,12,0)), color-stop(71%, rgba(240,47,23,0)), color-stop(100%, rgba(231,56,39,0)));
+    background: -webkit-linear-gradient(left, rgba(248,80,50,1) 0%, rgba(248,80,50,0) 0%, rgba(241,111,92,0) 50%, rgba(246,41,12,0) 51%, rgba(240,47,23,0) 71%, rgba(231,56,39,0) 100%);
+    background: -o-linear-gradient(left, rgba(248,80,50,1) 0%, rgba(248,80,50,0) 0%, rgba(241,111,92,0) 50%, rgba(246,41,12,0) 51%, rgba(240,47,23,0) 71%, rgba(231,56,39,0) 100%);
+    background: -ms-linear-gradient(left, rgba(248,80,50,1) 0%, rgba(248,80,50,0) 0%, rgba(241,111,92,0) 50%, rgba(246,41,12,0) 51%, rgba(240,47,23,0) 71%, rgba(231,56,39,0) 100%);
+    background: linear-gradient(to right, rgba(248,80,50,1) 0%, rgba(248,80,50,0) 0%, rgba(241,111,92,0) 50%, rgba(246,41,12,0) 51%, rgba(240,47,23,0) 71%, rgba(231,56,39,0) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f85032', endColorstr='#e73827', GradientType=1 );
+}*/
+#mi span {
+	color: white !important;
+}
+
+.fa-angle-double-down:before {
+	color: white;
+}
+
+#double-down {
+	margin-left: 50%;
+}
+
+#double-down-div {
+	width: 100%;
+}

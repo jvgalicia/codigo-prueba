@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<ui:composition template="/headAdmin.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="bodyPromotor">
+		<script type="text/javascript"> 
+		 nombre();
+		seleccion();
+	</script>
+		<div>
+			<label style="font-size: 20px;" id="administradora"> : <p:outputLabel
+					value="#{beanAdministradora.administradora.admNombre} #{beanAdministradora.resposeDTO.msg}" />
+			</label>
+
+		</div>
+		<fieldset class="forma">
+			<!-- <span class="icon-Grid-Icon">&nbsp;Reticula</span>  -->
+			<span class="fa fa-th-list" style="color: #808080;">&nbsp;Listado</span>
+			<!-- 	<span class="icon-Add-Icon" style="margin-left: 780px; position: static;">
+					Agregar</span> -->
+			<p:commandLink value="Agregar" action="altaAdministradora"
+				styleClass="fa fa-plus-circle Agregar"></p:commandLink>
+		</fieldset>
+
+		<center style="width: 81%; padding-left: 36px;">
+			<h:form id="tablaAdminitradora">
+				<p:growl id="administradora" showDetail="true" />
+				<p:dataTable id="tablaAdministradoras" var="obj"
+					value="#{beanAdministradora.listaAdmin}"
+					emptyMessage="No Existen Registros" paginator="true" rows="10"
+					rowKey="#{obj.admId}" style="font-size: 14px;">
+
+					<p:growl id="message" showDetail="true" />
+					<p:column >
+						<p:commandButton styleClass="imagen">
+						</p:commandButton>
+					</p:column>
+					<p:column>
+							<h:outputText value="Nombre: "></h:outputText>
+							<h:outputText value="#{obj.admNombre}"></h:outputText>
+							<p:separator styleClass="separardor" style="width: 300px;"/>
+							<h:outputText value="  Razon Social: "></h:outputText>
+							<h:outputText value="#{obj.admRazonsocial}"></h:outputText>
+					</p:column>
+					<p:column>
+							<h:outputText value="Numero de Comercializadoras: "></h:outputText>
+							<h:outputText value="#{obj.numeroComercializadoras}"></h:outputText>
+							<p:separator styleClass="separardor" style="width: 300px;"/>
+							<h:outputText value="  Estatus: "></h:outputText>
+							<h:outputText value="#{obj.admStatus}"></h:outputText>
+					</p:column>
+					<p:column style="text-align: center; min-width: 202px;">
+						<p:commandButton action="#{beanAdministradora.paginaEditar(obj)}" value="Editar"
+							title="Editar" icon="ui-icon-pencil"
+							style="margin-left: 5px; margin-top: 38px;" styleClass="acciones">
+						</p:commandButton>
+						<p:commandButton styleClass="acciones" value="Eliminar"
+							icon="ui-icon-trash" title="Eliminar"
+							action="#{beanAdministradora.bajaAdmin}"
+							update="tablaAdminitradora"
+							style="margin-left: 5px; margin-top: 38px;">
+							<f:setPropertyActionListener value="#{obj}"
+								target="#{beanAdministradora.administradora}" />
+							<p:confirm header="Confirmation"
+								message="Estas Seguro de eliminar?" icon="ui-icon-alert" />
+						</p:commandButton>
+						<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+							<p:commandButton value="Yes" type="button"
+								styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+							<p:commandButton value="No" type="button"
+								styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+						</p:confirmDialog>
+					</p:column>
+
+
+				</p:dataTable>
+			</h:form>
+		</center>
+	</ui:define>
+
+</ui:composition>

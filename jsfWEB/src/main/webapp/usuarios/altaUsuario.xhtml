@@ -1,0 +1,183 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<ui:composition template="/headAdmin.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="bodyPromotor">
+		<script type="text/javascript">
+			nombreuser();
+			color2();
+			vaciarCamposUsuarios();
+		</script>
+		<h:form id="formularioEmpleado" styleClass="altaadmin">
+			<fieldset class="contenedor_forma">
+				<fieldset class="forma">
+					<span style="color: #808080;">AGREGAR&nbsp;USUARIO</span>
+					<p:commandLink value="Regresar" action="#{beanUser.listaUsuario}"
+						styleClass="fa fa-reply regresar"></p:commandLink>
+				</fieldset>
+			</fieldset>
+			<p:fieldset styleClass="fieldadmin">
+				<p:commandButton styleClass="fotoalta" value="" />
+				<div class="vertical"></div>
+
+				<div class="titulosalta">
+					<label class="altainfo">INFORMACIÓN</label>
+					<!-- <p:outputLabel value="#{beanAdministradora.administradora.admNombre} #{beanAdministradora.resposeDTO.msg}" /> -->
+
+				</div>
+				<img
+					src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUA
+AAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO
+    9TXL0Y4OHwAAAABJRU5ErkJggg=="
+					alt="Red dot" />
+				<div class="parte1">
+
+					<label class="alta_lugar">Nombre: </label>
+					<p:separator styleClass="separator" />
+					<p:inputText id="usuNombre" value="#{beanUser.usuarios.nombre}"
+						required="true" styleClass="inputtextalta"
+						requiredMessage="Ingresa un valor para el campo 'Nombre'" />
+					<p:message for="usuNombre" />
+
+					<label class="alta_lugar">Apellido&nbsp;Paterno: </label>
+					<p:separator styleClass="separator" />
+
+					<p:inputText id="socPaterno"
+						value="#{beanUser.usuarios.apellidopaterno}" required="true"
+						styleClass="inputtextalta"
+						requiredMessage="Ingresa un valor para el campo 'Apellido Paterno'" />
+					<p:message for="socPaterno" />
+
+					<label class="alta_lugar">Apellido&nbsp;Materno: </label>
+					<p:separator styleClass="separator" />
+
+					<p:inputText id="socMaterno"
+						value="#{beanUser.usuarios.apellidomaterno}" required="true"
+						styleClass="inputtextalta"
+						requiredMessage="Ingresa un valor para el campo 'Apellido Materno'" />
+					<p:message for="socMaterno" />
+
+					<label class="alta_lugar">Genero: </label>
+					<p:separator styleClass="separator" />
+					<p:selectOneMenu id="genero" value="#{beanUser.usuarios.genero}"
+						effect="clip">
+						<f:selectItem itemLabel="Genero" itemValue="" />
+						<f:selectItem itemLabel="Hombre" itemValue="Hombre" />
+						<f:selectItem itemLabel="Mujer" itemValue="Mujer" />
+					</p:selectOneMenu>
+					<p:separator styleClass="separator" />
+
+					<label class="alta_lugar">Tipo&nbsp;de&nbsp;Usuario: </label>
+					<p:separator styleClass="separator" />
+
+					<p:selectOneMenu id="tipoUser"
+						value="#{beanUser.usuarios.tipoUsuario}" effect="clip">
+						<f:selectItem itemLabel="Tipo Usuario" itemValue="" />
+						<f:selectItems value="#{beanUser.catTipoUsuario.entrySet()}"
+							var="valor" itemValue="#{valor.key}" itemLabel="#{valor.value}" />
+					</p:selectOneMenu>
+
+				</div>
+				<div class="parte2" style="margin-top: -320px; height: 385px;">
+
+					<label class="alta_lugar">Usuario: </label>
+					<p:separator styleClass="separator" />
+
+					<p:inputText id="usuUsuario" value="#{beanUser.usuarios.usuario}"
+						required="true" styleClass="inputtextalta"
+						requiredMessage="Ingresa un valor para el campo 'Usuario'" />
+					<p:message for="usuUsuario" />
+
+					<label class="alta_lugar">Contraseña: </label>
+					<p:separator styleClass="separator" />
+
+					<p:password id="txtPassword" value="#{beanUser.usuarios.password}"
+						required="true" styleClass="inputtextalta" feedback="true"
+						match="txtPassword2" weakLabel="Debíl" goodLabel="Fuerte"
+						strongLabel="Muy Fuerte"
+						validatorMessage="las contraseñas no coinciden o tiene una longitud menor a 8 caracteres"
+						promptLabel="Ingrese la contraseña"
+						requiredMessage="Ingresa un valor para el campo 'Contraseña'">
+						<f:validateLength minimum="8"></f:validateLength>
+					</p:password>
+					<p:message for="txtPassword" />
+
+					<label class="alta_lugar">Repita&nbsp;Contraseña: </label>
+					<p:separator styleClass="separator" />
+
+					<p:password id="txtPassword2" value="#{beanUser.usuarios.password}"
+						required="true" styleClass="inputtextalta" feedback="true"
+						promptLabel="repita la contraseña"
+						validatorMessage="las contraseñas no coinciden"
+						requiredMessage="Repita contraseña" />
+					<p:message for="txtPassword" />
+
+					<label class="alta_lugar">Telefono: </label>
+					<p:separator styleClass="separator" />
+
+					<p:inputText id="usuTelefono" value="#{beanUser.usuarios.telefono}"
+						required="true" styleClass="inputtextalta"
+						requiredMessage="Ingresa un valor para el campo 'Telefono'" />
+					<p:message for="usuTelefono" />
+
+					<label class="alta_lugar">Empresa: </label>
+					<p:separator styleClass="separator" />
+
+					<p:selectOneMenu id="catEmpresa"
+						value="#{beanUser.usuarios.ideEmpresa}" effect="clip">
+						<f:selectItem itemLabel="Empresa" itemValue="" />
+						<f:selectItems value="#{beanUser.catEmpresa.entrySet()}"
+							var="valor" itemValue="#{valor.key}" itemLabel="#{valor.value}" />
+					</p:selectOneMenu>
+					<p:separator styleClass="separator" />
+
+					<label class="alta_lugar">Estatus: </label>
+					<p:separator styleClass="separator" />
+
+					<p:selectOneMenu id="status" value="#{beanUser.usuarios.status}"
+						effect="clip">
+						<f:selectItem itemLabel="Estatus" itemValue="" />
+						<f:selectItem itemLabel="Activo" itemValue="Activo" />
+						<f:selectItem itemLabel="Inactivo" itemValue="Inactivo" />
+					</p:selectOneMenu>
+				</div>
+				<p:outputLabel for="usuFechanac" value="Fecha de naciemiento:&nbsp;"
+					styleClass="alta_lugar" style="margin-left:135px;" />
+				<p:separator styleClass="separator" />
+				<p:calendar id="usuFechanac"
+					value="#{beanUser.usuarios.fechanacimineto}"
+					styleClass="calendario" effect="blind" mindate="1/1/28"
+					navigator="true" yearRange="c-70:c+10" locale="es"
+					maxdate="#{beanUser.currentDate}" style="margin-left: 135px;"></p:calendar>
+
+				<p:growl id="message" showDetail="true" />
+
+				<p:messages id="mesages" autoUpdate="true" closable="true"
+					showDetail="true"></p:messages>
+
+				<p:commandButton styleClass="botonguardar" value="Guardar"
+					action="#{beanUser.agregar}" update="formularioEmpleado"
+					style="margin-left: 5px; margin-top: 38px;">
+
+					<p:confirm header="Confirmation" message="Desea guardar"
+						icon="ui-icon-alert" />
+				</p:commandButton>
+
+
+				<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+					<p:commandButton value="Yes" type="button"
+						styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+					<p:commandButton value="No" type="button"
+						styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+				</p:confirmDialog>
+
+			</p:fieldset>
+		</h:form>
+	</ui:define>
+
+
+</ui:composition>

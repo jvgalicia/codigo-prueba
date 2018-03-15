@@ -1,0 +1,115 @@
+@font-face {
+  font-family: 'icomoon';
+  src: font-url("#{resource['fonts/icomoon.eot']}?hoycy3");
+  src: font-url("#{resource['fonts/icomoon.eot']}?hoycy3#iefix") format('embedded-opentype'),
+    font-url("#{resource['fonts/icomoon.woff?hoycy3']}") format('woff'),
+    font-url("#{resource['fonts/icomoon.ttf']}") format('truetype'),
+    font-url("#{resource['fonts/icomoon.svg?hoycy3#icomoon']}") format('svg');
+    
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-Add-Icon:before {
+  content: "\e900";
+  color: #808080;
+}
+.icon-Back-Icon:before {
+  content: "\e901";
+}
+.icon-Cancel-Icon:before {
+  content: "\e902";
+}
+.icon-Checkbox:before {
+  content: "\e903";
+}
+.icon-Checkmark:before {
+  content: "\e904";
+}
+.icon-Close-Icon:before {
+  content: "\e905";
+  color: #f2f2f2;
+  position: inherit;
+  margin-left: 49.5%;
+  opacity: 0.5;
+  font-size: 10px ;
+}
+.icon-Copyright-Icon:before {
+  content: "\e906";
+  font-size: 7px;
+}
+.icon-Dashboard-Icon:before {
+  content: "\e907";
+  font-size: 14px;
+}
+.icon-Down-Icon:before {
+  content: "\e908";
+  color: #f2f2f2;
+  position: inherit;
+  margin-left: 49.5%;
+  opacity: 0.5;
+}
+.icon-Edit-Icon:before {
+  content: "\e909";
+}
+.icon-Grid-Icon:before {
+  content: "\e90a";
+  color: #808080;
+}
+.icon-Label-Icon:before {
+  content: "\e90b";
+}
+.icon-Left-Arrow:before {
+  content: "\e90c";
+  color: #f2f2f2;
+  position: inherit;
+  margin-right: 3%;
+}
+.icon-List-Icon:before {
+  content: "\e90d";
+  color: #808080;
+}
+.icon-Report-Icon:before {
+  content: "\e90e";
+  font-size: 14px;
+}
+.icon-Right-Arrow:before {
+  content: "\e90f";
+  color: #f2f2f2;
+  position: initial;
+  margin-left: 0%;
+}
+.icon-Sesion-Close-Icon:before {
+  content: "\e910";
+}
+.icon-Settings-Icon:before {
+  content: "\e911";
+}
+.icon-Trash-Icon:before {
+  content: "\e912";
+}
+.icon-User-Icon:before {
+  content: "\e913";
+}
+.icon-Partner-Icon:before {
+  content: "\e914";
+}
+.icon-Shop-Icon:before {
+  content: "\e915";
+}
+

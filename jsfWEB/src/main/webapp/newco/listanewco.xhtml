@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<ui:composition template="/headAdmin.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="bodyPromotor">
+		<script type="text/javascript">
+		nombrenewco();
+		color4();
+		</script>
+		<div>
+			<label style="font-size: 20px;" id="newCo"> : </label>
+
+		</div>
+		<fieldset class="forma">
+			<!-- <span class="icon-Grid-Icon">&nbsp;Reticula</span>  -->
+			<span class="fa fa-th-list" style="color: #808080;">&nbsp;Listado</span>
+			<p:commandLink value="Agregar" action="#{beanNewCo.agregarNewco}"
+				styleClass="fa fa-plus-circle Agregar"></p:commandLink>
+		</fieldset>
+
+		<center style="width: 81%; padding-left: 36px;">
+			<h:form id="tablaNewcoLista">
+				<p:growl id="newCo" showDetail="true" />
+				<p:dataTable id="tablaAdministradoras" var="obj"
+					value="#{beanNewCo.listaNewco}"
+					emptyMessage="No Existen Registros" paginator="true" rows="10"
+					rowKey="#{obj.newId}" style="font-size: 14px;">
+
+					<p:growl id="message" showDetail="true" />
+					<p:column>
+						<p:commandButton styleClass="imagen">
+						</p:commandButton>
+					</p:column>
+					<p:column>
+						<table>
+							<h:outputText value="Nombre: "></h:outputText>
+							<h:outputText value="#{obj.newNombre}"></h:outputText>
+							<p:separator styleClass="separardor" />
+							<h:outputText value="  Razon Social: "></h:outputText>
+							<h:outputText value="#{obj.newRazonsocial}"></h:outputText>
+						</table>
+					</p:column>
+					<p:column>
+						<table>
+							<h:outputText value="Numero de Administradoras: "></h:outputText>
+							<h:outputText value="#{obj.numeroAdmin}"></h:outputText>
+							<p:separator styleClass="separardor" />
+							<h:outputText value="  Estatus: "></h:outputText>
+							<h:outputText value="#{obj.newStatus}"></h:outputText>
+						</table>
+					</p:column>
+					<p:column>
+						<table>
+							<h:outputText value="Participarcion Porcentual: "></h:outputText>
+							<h:outputText value="#{obj.newPartiporcentual}"></h:outputText>
+							<p:separator styleClass="separardor" />
+							<h:outputText value=" credito por Administradora "></h:outputText>
+							<h:outputText value="#{obj.newCreditoadmin}"></h:outputText>
+						</table>
+					</p:column>
+					<p:column style="text-align: center; min-width: 202px;">
+						<p:commandButton action="editarNewco" value="Editar"
+							title="Editar" icon="ui-icon-pencil"
+							style="margin-left: 5px; margin-top: 38px;" styleClass="acciones">
+							<f:setPropertyActionListener value="#{obj}"
+								target="#{beanNewCo.newcoDTO}" />
+						</p:commandButton>
+						<p:commandButton styleClass="acciones" value="Eliminar"
+							icon="ui-icon-trash" title="Eliminar"
+							action="#{beanNewCo.eliminarNewco}"
+							update="tablaNewcoLista"
+							style="margin-left: 5px; margin-top: 38px;">
+							<f:setPropertyActionListener value="#{obj}"
+								target="#{beanNewCo.newcoDTO}" />
+							<p:confirm header="Confirmation"
+								message="Estas Seguro de eliminar?" icon="ui-icon-alert" />
+						</p:commandButton>
+						<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+							<p:commandButton value="Yes" type="button"
+								styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+							<p:commandButton value="No" type="button"
+								styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+						</p:confirmDialog>
+					</p:column>
+
+
+				</p:dataTable>
+				
+ 
+    <p:growl id="messages" showDetail="true" />
+			</h:form>
+		</center>
+	</ui:define>
+
+</ui:composition>

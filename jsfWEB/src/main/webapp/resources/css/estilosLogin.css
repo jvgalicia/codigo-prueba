@@ -1,0 +1,331 @@
+/*estilos para gin*/
+body {
+    margin: 0;
+    height: 100%;
+    transition: all 10s ease-in-out;
+    min-width: 430px;
+}
+.background-blur{
+    background-image: url('../resources/img/ws_Blur_2560x1600.jpg');
+    background-size: calc(100% + 200px);
+    background-position: 75px -20px;
+    background-repeat: no-repeat;
+    background-color: #f8f8f6;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    filter: blur(10px);
+}
+.header-login {
+    width: 100%;
+    height: 60px;
+    background: rgba(0, 16, 62, 0.58);
+    position: relative;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    box-shadow: 1px 3px 13px #353535;
+}
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto'), local('Roboto-Regular'), url(../fonts/Roboto.woff2) format('woff2');
+}
+
+@font-face {
+    font-family: 'FontAwesome';
+    src: url('../fonts/fontawesome-webfont.woff?v=4.2.0') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+.titulo-Header{
+    font-family: Arial;
+    color: #fff;
+    font-weight: bold;
+    display: inline-block;
+    line-height: 40px;
+    font-size: 25px;
+}
+
+.help-header {
+    float: right;
+    width: 30px;
+    height: 30px;
+    border: 3px solid #fff;
+    border-radius: 20px;
+    text-align: center;
+    color: white;
+    font-family: arial;
+    font-size: 25px;
+    cursor: pointer;
+    line-height: 30px;
+    background-color: #182c5b;
+    font-weight: bold;
+}
+
+.help-header:hover {
+    opacity: 0.6;
+}
+
+.contenedor-login {
+    width: 100%;
+    height: 450px;
+    background: rgba(255, 255, 255, 0.4);
+    padding: 20px 20px;
+    box-shadow: 1px 1px 12px #353535;
+    border: 0px solid #fff;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+.cuerpo-login {
+    position: relative;
+    margin: 0 auto;
+    display: table;
+    padding-top: 80px;
+    width: 80%;
+    max-width: 600px;
+}
+
+.logo-GIN {
+    width: 100%;
+    height: 160px;
+    background-image: url(../resources/img/logoGin.png);
+    background-repeat: no-repeat;
+    background-position: 50% 35%;
+}
+span.text-sesion {
+    color: #fff;
+    font-family: arial;
+    margin: 0 auto;
+    display: table;
+    line-height: 280px;
+    font-size: 35px;
+    text-shadow: 2px 2px 5px #000000;
+}
+
+.form-login {
+    padding: 20px 20px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.form-login input[type="text"] {
+    width: 100%;
+    height: 50px;
+    padding: 10px 10px;
+    box-sizing: border-box;
+    font-size: 25px;
+    color: #425096;
+    border-radius: 10px 10px 0 0;
+    border: 1px solid #425096;
+}
+
+.boton-password input[type="password"] {
+    width: 90%;
+    height: 50px;
+    padding: 10px 10px;
+    box-sizing: border-box;
+    font-size: 25px;
+    color: #425096;
+    border-radius: 0px 0px 0px 10px;
+    border: 1px solid #425096;
+    margin-top: -1px;
+}
+.boton-password input[type="submit"] {
+    width: 10%;
+    height: 50px;
+    box-sizing: border-box;
+    border-radius: 0px 0px 10px 0px;
+    border: 1px solid #102177;
+    margin-top: -1px;
+    float: right;
+    background: #182c5b;
+    cursor: pointer;
+    border-left: 0;
+    border-top: 0;
+    background-image: url(../resources/img/flecha_n.png);
+    background-size: 30px;
+    background-repeat: no-repeat;
+    background-position: 50%;
+}
+
+.boton-password input[type="submit"]:hover {
+    background-color: #e7eaf9;
+}
+.area-check {
+    display: table;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: arial;
+}
+
+input[type="checkbox"] {
+    margin-right: 6px;
+    width: 20px;
+    height: 20px;
+}
+
+.area-check span {
+    float: right;
+    line-height: 25px;
+    color: #ffffff;
+    font-family: arial;
+    text-shadow: 2px 1px 1px #0e0e0e;
+}
+.barra-division {
+    width: 90%;
+    margin: 0 auto;
+    box-shadow: 1px 1px 7px rgb(245, 245, 245);
+    height: 2px;
+    background: rgba(24, 44, 91, 0.64);
+    border-radius: 3px;
+}
+
+.liga-recuperar {
+    text-align: center;
+    height: 70px;
+    line-height: 70px;
+}
+
+.liga-recuperar a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+    font-family: arial;
+    text-shadow: 2px 1px 1px #0e0e0e;
+}
+
+.liga-recuperar:hover {
+    text-decoration: underline;
+}
+input:focus{
+    outline: none;
+    box-shadow: -1px 0px 8px #182c5b;
+}
+
+
+/*estilos para bosque real*/
+
+.fondo-bosque{
+    background-image: url(../resources/img/bosque-real.jpg);
+    background-size: 1660px;
+    background-repeat: no-repeat;
+    background-color: #000000;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    animation: moverBackground 30s linear infinite;
+    -ms-animation: moverBackground 30s linear infinite;
+    -moz-animation: moverBackground 30s linear infinite;
+    -webkit-animation: moverBackground 30s linear infinite;
+    animation-direction: alternate-reverse;
+}
+body {
+    margin: 0;
+    height: 100%;
+    transition: all 10s ease-in-out;
+    min-width: 430px;
+    font-family: arial;
+}
+@keyframes moverBackground {
+    from { background-position: 0 0; }
+    to { background-position: 100% 0; }
+}
+
+.formulario-login {
+    width: 80%;               
+    position: relative;
+    margin: 0px auto;
+    display: table;
+    max-width: 510px;
+}
+.contenedor-login-bosq {
+    width: 100%;
+    height: 400px;
+    background-image: url('../resources/img/Fonfo.png');
+    margin-top: 70px;
+    border-radius: 10px;
+    box-shadow: 3px 4px 15px rgba(35, 33, 33, 0.96);
+}
+.logo-bosques {
+    width: 100%;
+    height: 140px;
+    background-image: url('../resources/img/logoCapp.png');
+    background-repeat: no-repeat;
+    background-position: 50%;
+}
+span.titulo-bosques {
+    margin: 0 auto;
+    display: table;
+    color: #fff;
+    font-size: 22px;
+}
+
+.input-usuario {
+    display: table;
+    margin: 0 auto;
+    width: 100%;
+    padding: 20px 50px;
+    box-sizing: border-box;
+    max-width: 500px;
+}
+
+input.user-loginGIN {
+    width: 100%;
+    display: table;
+    margin: 8px auto;
+    height: 40px;
+    border: 0;
+    box-shadow: 2px 2px 10px black;
+    padding: 8px 10px;
+    box-sizing: border-box;
+    font-size: 16px;
+    border-radius: 3px;
+}
+input:focus{
+    outline: none;
+    box-shadow: -1px 0px 8px #182c5b;
+}
+
+input.boton-ingresar {
+    float: right;
+    width: 120px;
+    height: 30px;
+    background: #45484d;
+    background: -moz-linear-gradient(top,  #45484d 0%, #000000 100%);
+    background: -webkit-linear-gradient(top,  #45484d 0%,#000000 100%);
+    background: linear-gradient(to bottom,  #45484d 0%,#000000 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#45484d', endColorstr='#000000',GradientType=0 );
+    color: #fff;
+    border: 0;
+    box-shadow: 1px 2px 6px #080808;
+    cursor: pointer;
+    margin-top: 20px;
+}
+input.boton-ingresar:hover{
+    background: #000000;
+    background: -moz-linear-gradient(top,  #000000 0%, #45484d 100%);
+    background: -webkit-linear-gradient(top,  #000000 0%,#45484d 100%);
+    background: linear-gradient(to bottom,  #000000 0%,#45484d 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#45484d',GradientType=0 );
+    border: 1px solid #484848;
+}
+
+.olvide-pass a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+    font-family: arial;
+    text-shadow: 2px 1px 1px #0e0e0e;
+}
+
+.olvide-pass a:hover {
+    text-decoration: underline;
+}
+.olvide-pass {
+    display: table;
+    margin: 0 auto;
+}

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+	<title>CAPP</title>
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<h:outputStylesheet library="css" name="menu.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="style.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="stilotablas.css"></h:outputStylesheet>
+	<h:outputScript library="primefaces" name="jquery/jquery.js" target="head" />
+	<h:outputScript library="primefaces" name="jquery/jquery-plugins.js" target="head" />
+	<h:outputScript library="js" name="administradora.js" />
+	<h:outputScript library="js" name="newCo.js" />
+	<h:outputScript library="js" name="menu.js" />
+	<h:outputScript library="js" name="empresa.js" />
+
+	<script type="text/javascript">
+		PrimeFaces.locales['es'] = {
+			closeText : 'Cerrar',
+			prevText : '',
+			nextText : '',
+			monthNames : [ 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo',
+					'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre',
+					'Noviembre', 'Diciembre' ],
+			monthNamesShort : [ 'Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun',
+
+			'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic' ],
+			dayNames : [ 'Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves',
+					'Viernes', 'Sábado' ],
+			dayNamesShort : [ 'Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab' ],
+			dayNamesMin : [ 'D', 'L', 'M', 'M', 'J', 'V', 'S' ],
+			weekHeader : 'Semana',
+			firstDay : 1,
+			isRTL : false,
+			showMonthAfterYear : false,
+			yearSuffix : '',
+			timeOnlyTitle : 'Sólo hora',
+			timeText : 'Tiempo',
+			hourText : 'Hora',
+			minuteText : 'Minuto',
+			secondText : 'Segundo',
+			currentText : 'Fecha actual',
+			ampm : false,
+			month : 'Mes',
+			week : 'Semana',
+			day : 'Día',
+			allDayText : 'Todo el día'
+		};
+		$(window).ready(function() {
+			async: true, $("#LoadPage").delay(1500).fadeOut("slow")
+		});
+	</script>
+
+
+</h:head>
+
+<h:body onload="nobackbackbutton();">
+	<span id="LoadPage"><div class="loader"></div>
+		<p>Cargando...</p></span>
+	<div class="encabezado">
+		<p:commandButton styleClass="foto" value="" />
+		<fieldset class="textofield">
+			<label id="objEmpleados2" style="font-size: 12px; font-weight: bold;">
+				<p:outputLabel
+					value="#{beanUser.nombreUser} #{beanUser.apellidoUSer}" />
+			</label>
+
+			<hr width="232px" align="right" />
+			<p:commandLink value="&nbsp;Configuración"
+				styleClass="fa fa-cog cerrar"
+				action="usuarios/editarUsuario.xhtml" id="Confi"></p:commandLink>
+			<!-- <span class="icon-Settings-Icon" style="font-size: 10.5px;">&nbsp;Configuración&nbsp;</span> -->
+			<p:commandLink value="&nbsp;Cerrar&nbsp;Cesión" action="capp.xhtml"
+				styleClass="cerrar fa fa-power-off">
+				<p:confirm header="Confirmación" message="Desea cerrar cesión"
+					icon="ui-icon-alert" />
+			</p:commandLink>
+			<p:confirmDialog global="true" showEffect="fade" hideEffect="fade"
+				styleClass="elementstyle">
+				<p:commandButton value="Yes" type="button"
+					styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+				<p:commandButton value="No" type="button"
+					styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+			</p:confirmDialog>
+		</fieldset>
+		<fieldset class="titulin">
+			<span style="color: #33ccff; font-weight: bold;">| </span>
+			<p:outputLabel id="Titulo" value="Bienvenido"></p:outputLabel>
+		</fieldset>
+	</div>
+	<h:form id="formularioBienvenido">
+		<div class="barra" style="">
+			<p:menu styleClass="ui-menu" toggleable="true">
+				<p:menuitem icon="fa fa-star-half-full" value="NEWCO"
+					styleClass="menulink" id="linknewco"
+					action="#{beanNewCo.listaNewco}" />
+				<p:menuitem icon="fa fa-th-large" value="Administradoras"
+					id="linkadmin" action="#{beanAdministradora.listaAdministradora}"
+					styleClass="menulink" />
+				<p:menuitem value="Comercializadoras" icon="fa fa-tags"
+					id="linkcomer" action="#{beanComer.listaComercializadora}"
+					styleClass="menulink" />
+
+				<p:menuitem icon="fa fa-shopping-cart" value="Empresas" id="linkempre"
+					action="#{beanEmpresas.listaEmpresa}" styleClass="menulink" />
+
+				<p:menuitem value="Usuarios" icon="fa fa-user" id="linkuser"
+					action="#{beanUser.listaUsuario}" styleClass="menulink" />
+
+				<p:submenu label="Reportes" icon="fa fa-file-o" styleClass="submenu" expanded="false">
+
+					<p:menuitem icon="ui-icon-minus" value="Reporte de Ventas"
+								id="linkventas" action="#{beanReporteVentas.listaReporteVentas}"></p:menuitem>
+					<p:menuitem icon="ui-icon-minus" value="Reporte de Transacciones"
+						id="linktransacciones"
+						action="#{beanReporteVentas.listaReporteTransacciones}"></p:menuitem>
+					<p:menuitem icon="ui-icon-minus" value="Lista Negra" id="linknegra"
+						action="#{beanReporteVentas.listaReporteListaNegra}"></p:menuitem>
+					<p:menuitem icon="ui-icon-minus" value="Comentarios"
+						id="linkcomentarios" action="#{beanComentarios.listaComentarios}"></p:menuitem>
+				</p:submenu>
+			</p:menu>
+			<p:menu>
+				<p:menuitem styleClass="menulink" value="salir" icon="fa fa-power-off">
+
+					<p:commandLink value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Salir" action="capp.xhtml"
+						styleClass="desapear fa fa-power-off" style="width: 198px; 
+						height: 20px; margin-left: -7px; font-size: 15px;">
+
+						<p:confirm header="Confirmación" message="Desea cerrar cesión"
+							icon="ui-icon-alert" />
+					</p:commandLink>
+					<p:confirmDialog global="true" showEffect="fade" hideEffect="fade"
+						styleClass="elementstyle">
+						<p:commandButton value="Yes" type="button"
+							styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+						<p:commandButton value="No" type="button"
+							styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+					</p:confirmDialog>
+				</p:menuitem>
+
+			</p:menu>
+	</div>
+	<div class="capp"></div>
+	</h:form>
+	<div id="container">
+		<ui:insert name="bodyPromotor"></ui:insert>
+	</div>
+
+</h:body>
+</html>
